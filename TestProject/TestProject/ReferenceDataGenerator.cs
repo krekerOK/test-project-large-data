@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
 using TestProject.Utils;
 
 namespace TestProject
@@ -29,21 +27,16 @@ namespace TestProject
 
             int amountOfIterations = (amountOfRows / amountOfCharacters) + 1;
 
-            var minRowLength = 4;
-            var minStringBuilderStartCapacity = amountOfRows * minRowLength;
-
-            var stringBuilder = new StringBuilder("Id,LookupName", minStringBuilderStartCapacity);
-            for (int i = 0; i < amountOfIterations; i++)
-            {
-                for (int j = 0; j < amountOfCharacters; j++)
-                {
-                    string nextValue = latinAlphabetForCSV[j] + i.ToString() + Environment.NewLine;
-                    stringBuilder.Append(nextValue);
-                }
-            }
             using (var streamWriter = new StreamWriter(filePath))
             {
-                streamWriter.Write(stringBuilder.ToString());
+                for (int i = 0; i < amountOfIterations; i++)
+                {
+                    for (int j = 0; j < amountOfCharacters; j++)
+                    {
+                        string nextValue = latinAlphabetForCSV[j] + i.ToString();
+                        streamWriter.WriteLine(nextValue);
+                    }
+                }
             }
         }
     }

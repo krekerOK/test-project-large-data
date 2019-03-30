@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using TestProject.Utils;
 
@@ -85,31 +84,24 @@ namespace TestProject
         {
             _amountOfActiveThreads++;
 
-            var minRowLength = 3 + 2 + 7;
-            var minStringBuilderStartCapacity = RowsInFile * minRowLength;
-
-            var stringBuilder = new StringBuilder(minStringBuilderStartCapacity);
-
-            for (int j = 0; j < RowsInFile; j++)
-            {
-                var randomReferenceDataIndex = _random.Next(_allReferenceDataLookUps.Count);
-                var referenceDataLookUp = _allReferenceDataLookUps[randomReferenceDataIndex];
-
-                //var randomString = StringUtils.GenerateRandomString(5);
-                var randomString = "rando";
-
-                string nextValue = referenceDataLookUp + ", " + randomString + Environment.NewLine;
-
-                stringBuilder.Append(nextValue);
-            }
-
             using (var streamWriter = new StreamWriter(filePath))
             {
-                streamWriter.Write(stringBuilder.ToString());
-            }
+                for (int j = 0; j < RowsInFile; j++)
+                {
+                    var randomReferenceDataIndex = _random.Next(_allReferenceDataLookUps.Count);
+                    var referenceDataLookUp = _allReferenceDataLookUps[randomReferenceDataIndex];
 
-            _amountOfActiveThreads--;
-            GenerateNextFileIfNeeded();
+                    var randomString = StringUtils.GenerateRandomString(5);
+                    //var randomString = "rando";
+
+                    string nextValue = referenceDataLookUp + ", " + randomString;
+
+                    streamWriter.WriteLine(nextValue);
+                }
+
+                _amountOfActiveThreads--;
+                GenerateNextFileIfNeeded();
+            }
         }
     }
 }
