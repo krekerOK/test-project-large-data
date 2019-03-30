@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceDataGenerator.cs" />
+    <Compile Include="Utils\DataBaseHelper.cs" />
+    <Compile Include="Utils\PerformanceTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
