@@ -22,7 +22,6 @@ namespace TestProject
                 PrintMenu();
                 pressedKey = Console.ReadLine();
             }
-            Console.ReadLine();
         }
 
         private static void FirstTask()

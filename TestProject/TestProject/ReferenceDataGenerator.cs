@@ -14,7 +14,7 @@ namespace TestProject
             GenerateCSVFileWithReferenceData(tempFilePath, amountOfRows);
 
             var databaseHelper = new DataBaseHelper();
-            databaseHelper.ExecuteSPNonQuery($"sp_GenerateReferenceData @passToFileWithData = '{tempFilePath}'");
+            databaseHelper.ExecuteNonQuery($" exec sp_GenerateReferenceData @passToFileWithData = '{tempFilePath}'");
         }
 
         private void GenerateCSVFileWithReferenceData(string filePath, int amountOfRows)

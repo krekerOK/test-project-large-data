@@ -6,7 +6,8 @@ AS
 BEGIN
 IF @truncateOnStart = 1
 BEGIN
-	TRUNCATE TABLE ReferenceData
+	-- DELETE will be slow on huge amount of data. TRUNCATE should be considered, but then I should REMOVE/ADD all FKs
+	DELETE ReferenceData
 END
 declare @q nvarchar(MAX);
 set @q=
