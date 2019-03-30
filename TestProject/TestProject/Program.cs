@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using TestProject.Utils;
 
 namespace TestProject
 {
     class Program
     {
+        public static Stopwatch sw;
         static void Main(string[] args)
         {
             PrintMenu();
@@ -14,7 +16,22 @@ namespace TestProject
                 switch (pressedKey)
                 {
                     case "1": PerformanceTools.MeasureElapsedTime(FirstTask); break;
-                    case "2": PerformanceTools.MeasureElapsedTime(SecondTask); break;
+                    case "2":
+                        {
+                            //Console.WriteLine("Butch count:");
+                            //var batchCount = int.Parse(Console.ReadLine());
+
+                            //Console.WriteLine("Rows in file:");
+                            //var rowsInFile = int.Parse(Console.ReadLine());
+
+                            //sw = Stopwatch.StartNew();
+                            //PerformanceTools.MeasureElapsedTime(() => SecondTask(batchCount, rowsInFile));
+
+                            sw = Stopwatch.StartNew();
+                            PerformanceTools.MeasureElapsedTime(() => SecondTask(100, 100000));
+
+                            break;
+                        };
                     case "3": PerformanceTools.MeasureElapsedTime(ThirdTask); break;
                     case "4": PerformanceTools.MeasureElapsedTime(FourthTask); break;
                     default: Console.WriteLine("Unknown commad, try one more time."); break;
@@ -30,9 +47,17 @@ namespace TestProject
             referenceDataGenerator.GenerateReferenceData();
         }
 
-        private static void SecondTask()
+        private static void SecondTask(int batchCount, int rowsInFile)
         {
+            var transactionDataGenerator = new TransactionDataGenerator(
+                batchCount, rowsInFile, @"C:\Data\TransactionData", SecondTaskHasBeenCompleted);
+            transactionDataGenerator.GenerateTransactionData();
+        }
 
+        private static void SecondTaskHasBeenCompleted()
+        {
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
         }
 
         private static void ThirdTask()
@@ -49,7 +74,8 @@ namespace TestProject
         {
             Console.WriteLine();
             Console.WriteLine("Choose operation:");
-            Console.WriteLine("Genereta reference data, press '1'");
+            Console.WriteLine("Generate reference data, press '1'");
+            Console.WriteLine("Generate transaction data, press '2'");
             Console.WriteLine("Quit, press 'q'");
         }
     }
