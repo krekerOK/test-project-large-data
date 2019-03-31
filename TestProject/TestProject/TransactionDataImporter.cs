@@ -31,6 +31,7 @@ namespace TestProject
             foreach (var file in files)
             {
                 dbHelper.ExecuteNonQuery($"exec sp_ImportTransactionalData @passToFileWithData = '{file}'");
+                File.Delete(file);
             }
         }
 
