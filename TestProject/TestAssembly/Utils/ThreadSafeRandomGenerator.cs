@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace TestProject.Utils
+namespace TestAssembly.Utils
 {
     public static class ThreadSafeRandomGenerator
     {

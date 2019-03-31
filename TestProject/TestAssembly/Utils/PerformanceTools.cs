@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace TestProject.Utils
+namespace TestAssembly.Utils
 {
     public static class PerformanceTools
     {

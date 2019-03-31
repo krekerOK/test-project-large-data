@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using TestProject.Models;
-using TestProject.Utils;
+using TestAssembly.Models;
+using TestAssembly.Utils;
 
-namespace TestProject.Services
+namespace TestAssembly.Services
 {
     public class TransactionDataService
     {

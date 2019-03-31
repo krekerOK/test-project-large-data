@@ -1,4 +1,4 @@
-﻿namespace TestProject.Models
+﻿namespace TestAssembly.Models
 {
     public class ReferenceData
     {

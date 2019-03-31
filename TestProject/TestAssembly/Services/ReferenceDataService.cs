@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Linq;
-using TestProject.Utils;
+using TestAssembly.Utils;
 
-namespace TestProject.Services
+namespace TestAssembly.Services
 {
     public class ReferenceDataService
     {

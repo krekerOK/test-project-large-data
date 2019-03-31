@@ -1,6 +1,6 @@
 ﻿using System;
-using TestProject.Services;
-using TestProject.Utils;
+using TestAssembly.Services;
+using TestAssembly.Utils;
 
 namespace TestProject
 {

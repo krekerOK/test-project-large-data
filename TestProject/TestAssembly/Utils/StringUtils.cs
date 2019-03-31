@@ -1,4 +1,4 @@
-﻿namespace TestProject.Utils
+﻿namespace TestAssembly.Utils
 {
     public static class StringUtils
     {
