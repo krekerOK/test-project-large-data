@@ -2,10 +2,9 @@ USE Test
 
 GO
 
---DROP PROCEDURE sp_ImportTransactionalData
 CREATE PROCEDURE sp_ImportTransactionalData
 @passToFileWithData NVARCHAR(MAX),
-@truncateOnStart BIT = 0
+@truncateOnStart BIT = 1
 AS
 BEGIN
 IF @truncateOnStart = 1
@@ -33,5 +32,3 @@ ALTER DATABASE Test SET RECOVERY FULL;
 END
 
 GO
-
-USE master

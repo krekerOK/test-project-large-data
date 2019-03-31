@@ -2,7 +2,6 @@ USE Test
 
 GO
 
---DROP PROCEDURE sp_GenerateReferenceData
 CREATE PROCEDURE sp_GenerateReferenceData
 @passToFileWithData NVARCHAR(MAX),
 @truncateOnStart BIT = 1,
@@ -37,5 +36,3 @@ ALTER DATABASE Test SET RECOVERY FULL;
 END
 
 GO
-
-USE master
