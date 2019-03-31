@@ -11,7 +11,7 @@ namespace TestProject.Utils
             action();
             stopWatch.Stop();
 
-            Console.WriteLine(stopWatch.Elapsed);
+            Console.WriteLine($"Elapsed time: {stopWatch.Elapsed}");
 
             return stopWatch.Elapsed;
         }
