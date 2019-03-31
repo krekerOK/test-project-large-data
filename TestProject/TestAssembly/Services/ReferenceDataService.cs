@@ -27,6 +27,7 @@ namespace TestAssembly.Services
 
             int amountOfIterations = (amountOfRows / amountOfCharacters) + 1;
 
+            int amountOfGeneratedRows = 0;
             using (var streamWriter = new StreamWriter(filePath))
             {
                 for (int i = 0; i < amountOfIterations; i++)
@@ -35,6 +36,15 @@ namespace TestAssembly.Services
                     {
                         string nextValue = latinAlphabetForCSV[j] + i.ToString();
                         streamWriter.WriteLine(nextValue);
+                        amountOfGeneratedRows++;
+                        if (amountOfGeneratedRows >= amountOfRows)
+                        {
+                            break;
+                        }
+                    }
+                    if (amountOfGeneratedRows >= amountOfRows)
+                    {
+                        break;
                     }
                 }
             }
