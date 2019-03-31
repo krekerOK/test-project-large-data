@@ -21,3 +21,5 @@ CREATE TABLE TransactionalData (
 )
 
 GO
+
+USE master

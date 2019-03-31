@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using TestProject.Utils;
 
 namespace TestProject
 {
     class Program
     {
-        public static Stopwatch sw;
         static void Main(string[] args)
         {
             PrintMenu();
@@ -27,8 +25,7 @@ namespace TestProject
                             //sw = Stopwatch.StartNew();
                             //PerformanceTools.MeasureElapsedTime(() => SecondTask(batchCount, rowsInFile));
 
-                            sw = Stopwatch.StartNew();
-                            PerformanceTools.MeasureElapsedTime(() => SecondTask(100, 100000));
+                            PerformanceTools.MeasureElapsedTime(() => SecondTask(100, 100_000));
 
                             break;
                         };
@@ -49,20 +46,14 @@ namespace TestProject
 
         private static void SecondTask(int batchCount, int rowsInFile)
         {
-            var transactionDataGenerator = new TransactionDataGenerator(
-                batchCount, rowsInFile, @"C:\Data\TransactionData", SecondTaskHasBeenCompleted);
+            var transactionDataGenerator = new TransactionDataGenerator(batchCount, rowsInFile, @"C:\Data\TransactionData");
             transactionDataGenerator.GenerateTransactionData();
-        }
-
-        private static void SecondTaskHasBeenCompleted()
-        {
-            sw.Stop();
-            Console.WriteLine(sw.Elapsed);
         }
 
         private static void ThirdTask()
         {
-
+            var transactionalDataImporter = new TransactionDataImporter();
+            transactionalDataImporter.Import(@"C:\Data\TransactionData");
         }
 
         private static void FourthTask()
@@ -76,6 +67,7 @@ namespace TestProject
             Console.WriteLine("Choose operation:");
             Console.WriteLine("Generate reference data, press '1'");
             Console.WriteLine("Generate transaction data, press '2'");
+            Console.WriteLine("Import transaction data, press '3'");
             Console.WriteLine("Quit, press 'q'");
         }
     }

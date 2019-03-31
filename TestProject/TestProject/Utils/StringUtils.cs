@@ -1,20 +1,16 @@
-﻿using System;
-
-namespace TestProject.Utils
+﻿namespace TestProject.Utils
 {
     public static class StringUtils
     {
-        public static Random Random = new Random();
+        private static string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
         public static string GenerateRandomString(int length)
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
             var stringChars = new char[length];
 
             for (int i = 0; i < stringChars.Length; i++)
             {
-                stringChars[i] = chars[Random.Next(chars.Length)];
+                stringChars[i] = chars[ThreadSafeRandomGenerator.Next(chars.Length)];
             }
 
             return new string(stringChars);
