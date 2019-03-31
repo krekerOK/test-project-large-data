@@ -6,7 +6,6 @@ E. g.:
 - ...
 
 Setup:
-1) Setup database. In SQLQueries folder there are 3 scripts, they should be run in following sequence: 
-   InstantiateDB.sql, sp_GenerateReferenceData.sql, sp_ImportTransactionalData.sql
+1) Setup database. In SQLQueries folder there is InstantiateDB.sql script
 2) Connection string to database is hard coded. Definition can be found in TestAssembly.Utils.DataBaseHelper ConnectionString property.
 3) Setup file system. All paths are hard coded, program expects that user have 2 folders: 'C:\Data' and 'C:\Data\TransactionData'
