@@ -20,7 +20,7 @@ set @q=
     WITH
     (
 		DATAFILETYPE = ''char'',
-		FIRSTROW = 2,
+		FIRSTROW = 1,
 		FIELDTERMINATOR = '', '',
 		ROWTERMINATOR = ''\n'',
 		TABLOCK
