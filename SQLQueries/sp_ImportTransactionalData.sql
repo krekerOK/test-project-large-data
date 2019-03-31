@@ -4,7 +4,7 @@ GO
 
 CREATE PROCEDURE sp_ImportTransactionalData
 @passToFileWithData NVARCHAR(MAX),
-@truncateOnStart BIT = 1
+@truncateOnStart BIT = 0
 AS
 BEGIN
 IF @truncateOnStart = 1
