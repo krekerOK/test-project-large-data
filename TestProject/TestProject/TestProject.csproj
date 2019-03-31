@@ -47,9 +47,8 @@
     <Compile Include="Models\TransactionalData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReferenceDataGenerator.cs" />
-    <Compile Include="TransactionDataImporter.cs" />
-    <Compile Include="TransactionDataGenerator.cs" />
+    <Compile Include="Services\ReferenceDataService.cs" />
+    <Compile Include="Services\TransactionDataService.cs" />
     <Compile Include="Utils\DataBaseHelper.cs" />
     <Compile Include="Utils\PerformanceTools.cs" />
     <Compile Include="Utils\StringUtils.cs" />

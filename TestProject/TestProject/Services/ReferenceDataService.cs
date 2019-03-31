@@ -2,11 +2,11 @@
 using System.Linq;
 using TestProject.Utils;
 
-namespace TestProject
+namespace TestProject.Services
 {
-    public class ReferenceDataGenerator
+    public class ReferenceDataService
     {
-        public void GenerateReferenceData(int amountOfRows = 1_000_000)
+        public void Generate(int amountOfRows = 1_000_000)
         {
             var tempFilePath = @"C:\Data\t.csv";
             GenerateCSVFileWithReferenceData(tempFilePath, amountOfRows);

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Linq;
-using TestProject.Models;
+using TestProject.Services;
 using TestProject.Utils;
 
 namespace TestProject
@@ -10,6 +9,11 @@ namespace TestProject
         static void Main(string[] args)
         {
             PrintMenu(false);
+            RunProgramMenu();
+        }
+
+        private static void RunProgramMenu()
+        {
             var pressedKey = Console.ReadLine();
             while (pressedKey != "q")
             {
@@ -49,36 +53,26 @@ namespace TestProject
 
         private static void FirstTask()
         {
-            var referenceDataGenerator = new ReferenceDataGenerator();
-            referenceDataGenerator.GenerateReferenceData();
+            var referenceDataService = new ReferenceDataService();
+            referenceDataService.Generate();
         }
 
         private static void SecondTask(int batchCount, int rowsInFile)
         {
-            var transactionDataGenerator = new TransactionDataGenerator(batchCount, rowsInFile, @"C:\Data\TransactionData");
-            transactionDataGenerator.GenerateTransactionData();
+            var transactionDataService = new TransactionDataService();
+            transactionDataService.Generate(batchCount, rowsInFile);
         }
 
         private static void ThirdTask()
         {
-            var transactionalDataImporter = new TransactionDataImporter();
-            transactionalDataImporter.Import(@"C:\Data\TransactionData");
+            var transactionDataService = new TransactionDataService();
+            transactionDataService.Import();
         }
 
         private static void FourthTask(int skip, int take)
         {
-            string query = "SELECT * " +
-                           "FROM TransactionalData " +
-                           "ORDER BY Id " +
-                          $"OFFSET({skip}) ROWS FETCH NEXT({take}) ROWS ONLY";
-
-            var dbHelper = new DataBaseHelper();
-            var transactionalDataItems = dbHelper.ExecuteReader(query, sqlDataReader => new TransactionalData
-            {
-                Id = sqlDataReader.GetInt32(0),
-                ReferenceDataId = sqlDataReader.GetInt32(1),
-                DataValue = sqlDataReader.GetString(2)
-            }).ToList();
+            var transactionDataService = new TransactionDataService();
+            var transactionalDataItems = transactionDataService.FetchTransactionalData(skip, take);
 
             Console.WriteLine();
             Console.WriteLine("Fetched transactional data items:");
